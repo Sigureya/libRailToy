@@ -16,6 +16,7 @@ export const RAIL_SHAPE_STRAIGHT: RailShape = {
   vector: {
     x: 100,
     y: 0,
+    z: 0,
   },
 };
 // S字レール
@@ -35,6 +36,7 @@ export const RAIL_SHAPE_S_SHAPED: RailShape = {
   vector: {
     x: 100,
     y: 0,
+    z: 0,
   },
 };
 
@@ -55,5 +57,6 @@ export const RAIL_SHAPE_CURVE: RailShape = {
   vector: {
     x: 50,
     y: 50,
+    z: 0,
   },
 };
