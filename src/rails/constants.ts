@@ -1,4 +1,4 @@
-import { RailShape } from "./railShape";
+import { RailShape } from "./shape/railShape";
 // 直線レール
 export const RAIL_SHAPE_STRAIGHT: RailShape = {
   input: {
