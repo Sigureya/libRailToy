@@ -6,18 +6,9 @@ export const joint = (
   angle: 0,
   stationOffset: 0,
   trackOffset: 0,
+  height: 0,
   ...jointArg,
 });
 
-export const plus = (): RailJoint => ({
-  angle: 0,
-  jointType: 1,
-  stationOffset: 0,
-  trackOffset: 0,
-});
-export const minus = (): RailJoint => ({
-  angle: 0,
-  jointType: -1,
-  stationOffset: 0,
-  trackOffset: 0,
-});
+export const plus = (): RailJoint => joint({ jointType: 1 });
+export const minus = (): RailJoint => joint({ jointType: -1 });
