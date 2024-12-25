@@ -6,13 +6,13 @@ const BASE_SIZE = 25;
 export const straight = (baseSize = BASE_SIZE): RailShape => ({
   input: minus(),
   output: plus(),
-  vector: { x: baseSize * 4, y: 0, z: 0 },
+  vector: { x: baseSize * 4, y: 0 },
 });
 
 export const curve = (baseSize = BASE_SIZE): RailShape => ({
   input: minus(),
   output: joint({ jointType: 1, angle: 45 }),
-  vector: { x: baseSize * 4, y: 0, z: 0 },
+  vector: { x: baseSize * 4, y: 0 },
 });
 const quarterPlusPlus = () => {};
 // export const shapedS = (): RailShape => {
@@ -24,5 +24,5 @@ const quarterPlusPlus = () => {};
 export const zeroKiroPost = (): RailShape => ({
   input: minus(),
   output: plus(),
-  vector: { x: 0, y: 0, z: 0 },
+  vector: { x: 0, y: 0 },
 });
