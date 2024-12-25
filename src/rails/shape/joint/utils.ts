@@ -55,6 +55,20 @@ export const areTrackOffsetsCompatible = (
 ): boolean => {
   return jointA.trackOffset === jointB.trackOffset;
 };
+/**
+ * 2つのRailJointの複線幅が一致するかを判定します。
+ * 複線幅が一致する条件は、jointA.trackOffset === jointB.trackOffset です。
+ *
+ * @param jointA - 判定する最初のRailJoint。
+ * @param jointB - 判定する2つ目のRailJoint。
+ * @returns 複線幅が一致する場合はtrue、それ以外はfalse。
+ */
+export const areHeightCompatible = (
+  jointA: RailJoint,
+  jointB: RailJoint
+): boolean => {
+  return jointA.height === jointB.height;
+};
 
 /**
  * 2つのRailJointの駅幅が一致するかを判定します。

@@ -17,4 +17,9 @@ export interface RailJoint {
    * @description 駅幅のオフセット。同じ値の時に接続できる。オフセット1は未計測
    */
   stationOffset: number;
+
+  /**
+   * @description 高さ。正の値なら上り坂、負の値なら下り坂
+   */
+  height: number;
 }
