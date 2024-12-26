@@ -1,5 +1,5 @@
 import { RailJoint } from "./joint";
-import { RailShape } from "./railShape";
+import { RailShape } from "./shepe/railShape";
 
 export interface RailSegment {
   name: string;
