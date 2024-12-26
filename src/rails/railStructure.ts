@@ -1,4 +1,4 @@
-import { RailShape } from "./railShape";
+import { RailShape } from "./shape";
 
 // レールの複合表現。ポイントなどを想定している
 export interface RailStructure {

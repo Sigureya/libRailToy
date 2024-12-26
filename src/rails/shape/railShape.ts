@@ -5,5 +5,6 @@ export interface RailShape {
 
   input: RailJoint;
   output: RailJoint;
+  canFlip: boolean;
   //おそらく曲率の情報が必要。内側曲線レールと外側曲線レールを統一的に扱う時に必要になる
 }
