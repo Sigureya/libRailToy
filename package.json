@@ -1,4 +1,19 @@
 {
+  "name": "lib-rail-toy",
+  "version": "1.0.0",
+  "description": "lib-rail-toy.",
+  "main": "dist/lib-rail-toy.cjs.js",
+  "module": "dist/lib-rail-toy.esm.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "eslint": "^9.17.0",
     "typescript": "^5.7.2",
