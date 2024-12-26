@@ -1,25 +1,29 @@
+import { JOINT_BASIC_MINUS, JOINT_BASIC_PLUS } from "./constants";
+
 export interface RailJoint {
-  // 接合点の向き（度単位）。
-  // レール接合の整合性チェックに使用。
-  // Milli-degree(0〜360000)なので注意
-  angle: number;
-
   /**
-   * @description 接合の形状。1: 凸, -1: 凹, 0xe331: 接続不能。
+   * @description 凹のレール接合部。基本は負の値だが、凸凸を作りたいなら両方を正の値にする必要がある。
    */
-  jointType: -1 | 1 | 0xe331;
+  input: number;
   /**
-   * @description 複線幅のオフセット。同じ値の時に接続できる。オフセット1は60cm
+   * @description 凸のレール接合部。基本は正の値だが、凹凹を作りたいなら両方を負の値にする必要がある。
    */
-  trackOffset: number;
-
-  /**
-   * @description 駅幅のオフセット。同じ値の時に接続できる。オフセット1は未計測
-   */
-  stationOffset: number;
-
-  /**
-   * @description 高さ。正の値なら上り坂、負の値なら下り坂
-   */
-  height: number;
+  output: number;
 }
+/**
+ * @description レールの凹凸が接続可能か判定する。数値は形状を表し、対となる形状のみが接続可能。
+ * @param jointA
+ * @param jointB
+ * @returns
+ */
+export const canJointConect = (jointA: RailJoint, jointB: RailJoint) => {
+  return jointA.input - jointB.input === 0;
+};
+
+export const joint: (jointArg: Partial<RailJoint>) => RailJoint = (
+  jointArg
+) => ({
+  input: JOINT_BASIC_MINUS, // -1
+  output: JOINT_BASIC_PLUS, // +1
+  ...jointArg,
+});
