@@ -5,8 +5,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "MyLibrary", // グローバル変数名
-      fileName: (format) => `my-library.${format}.js`, // 出力ファイル名
+      name: "RailToy", // グローバル変数名
+      fileName: (format) => `railtoy.${format}.js`, // 出力ファイル名
     },
     rollupOptions: {
       // 外部モジュール指定 (バンドルしない)
