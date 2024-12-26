@@ -13,5 +13,5 @@
     "lib": ["ESNext"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "tests"]
+  "exclude": ["node_modules", "tests", "vitest/dist/**/"]
 }
