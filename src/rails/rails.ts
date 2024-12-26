@@ -214,7 +214,7 @@ export const R28_TURNOUT_DOUBLE_R = {
   canFlip: true,
 };
 
-export const R29_CURVE_S = {
+export const R29_STRAIGHT_SHAPED_S = {
   name: "S字レール",
   price: 660,
   canFlip: true,
