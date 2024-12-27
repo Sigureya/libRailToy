@@ -1,4 +1,4 @@
-import { RailVector4 } from "./railVector4";
+import type { RailVector4 } from "./railVector4";
 import { add, subtract } from "./utils";
 
 /**
@@ -11,10 +11,10 @@ const createRailVectorPair = (
   readonly STRAIGHT: Readonly<RailVector4>;
   readonly CURVE: Readonly<RailVector4>;
 } =>
-  ({
-    STRAIGHT: straight,
-    CURVE: subtract(next, straight),
-  } as const);
+({
+  STRAIGHT: straight,
+  CURVE: subtract(next, straight),
+} as const);
 
 /**
  * @description 8方向の専用角度を定義
