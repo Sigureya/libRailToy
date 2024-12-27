@@ -1,9 +1,9 @@
-import { RailConstants } from "./constants/types";
-import { RailShape } from "./railShape";
+import { type RailConstants, SIMULATOR_RAIL_CONSTANTS } from "./constants";
+import type { RailShape } from "./railShape";
 
 export class ShapeFactory {
   private _constatns: Readonly<RailConstants>;
-  constructor(constants: Readonly<RailConstants>) {
+  constructor(constants: Readonly<RailConstants> = SIMULATOR_RAIL_CONSTANTS) {
     this._constatns = { ...constants };
   }
   get constants() {
