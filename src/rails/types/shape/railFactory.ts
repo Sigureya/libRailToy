@@ -1,7 +1,7 @@
 import { RailConstants } from "./constants/types";
 import { RailShape } from "./railShape";
 
-export class RailFactory {
+export class ShapeFactory {
   private _constatns: Readonly<RailConstants>;
   constructor(constants: Readonly<RailConstants>) {
     this._constatns = { ...constants };
@@ -36,5 +36,11 @@ export class RailFactory {
   }
   straightQuarter() {
     return this.straight(this._constatns.QUARTER_STRAIGHT_LENGTH);
+  }
+  trackOffset() {
+    return this.createShape({
+      height: this._constatns.STRAIGHT_LENGTH,
+      trackOffset: 1,
+    });
   }
 }
