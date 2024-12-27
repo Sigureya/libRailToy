@@ -1,6 +1,6 @@
 import { RailConstants } from "./types";
 
-export const railConstants: Readonly<RailConstants> = {
+export const SIMULATOR_RAIL_CONSTANTS: Readonly<RailConstants> = {
   GAUGE: 1,
   CURVE_RADIUS: 12,
   STRAIGHT_LENGTH: 12,
