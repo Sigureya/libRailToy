@@ -1,4 +1,5 @@
-import { type RailConstants, SIMULATOR_RAIL_CONSTANTS } from "./constants";
+import type { RailConstants } from "./constants";
+import { SIMULATOR_RAIL_CONSTANTS, } from "./constants";
 import type { RailShape } from "./railShape";
 
 export class ShapeFactory {

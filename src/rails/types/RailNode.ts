@@ -1,4 +1,4 @@
-import { RailModel } from "./rail";
+import type { RailModel } from "./rail";
 
 export interface RailNode {
   parentId: number;

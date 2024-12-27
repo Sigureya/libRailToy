@@ -1,4 +1,4 @@
-import { RailConstants } from "./types";
+import type { RailConstants } from "./types";
 
 export const SIMULATOR_RAIL_CONSTANTS: Readonly<RailConstants> = {
   GAUGE: 1,

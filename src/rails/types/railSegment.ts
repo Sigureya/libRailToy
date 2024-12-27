@@ -1,4 +1,4 @@
-import { RailJoint } from "./joint";
+import type { RailJoint } from "./joint";
 import type { RailShape } from "./shape";
 
 export interface RailSegment {

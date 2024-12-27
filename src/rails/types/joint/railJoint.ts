@@ -1,4 +1,3 @@
-import { JOINT_BASIC_MINUS, JOINT_BASIC_PLUS } from "./constants";
 
 export interface RailJoint {
   /**

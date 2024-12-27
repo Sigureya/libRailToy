@@ -1,5 +1,5 @@
-import { RailConstants } from "./constants";
-import { RailShape } from "./railShape";
+import type { RailConstants } from "./constants";
+import type { RailShape } from "./railShape";
 const convertUnitValue = (
   value: number,
   constantKey: keyof RailConstants,
