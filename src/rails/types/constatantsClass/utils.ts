@@ -1,4 +1,4 @@
-import { RailConstants } from "./railConstatnts";
+import type { RailConstants } from "./railConstatnts";
 
 /**
  * @description プラレール規格に基づく初期値を返す関数。
