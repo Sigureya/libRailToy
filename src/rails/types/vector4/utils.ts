@@ -1,5 +1,14 @@
 import { RailVector4 } from "./railVector4";
 
+export const zeroVector = (): RailVector4 => ({ a: 0, b: 0, c: 0, d: 0 });
+
+export const reverse = (vec: RailVector4): RailVector4 => ({
+  a: -vec.a,
+  b: -vec.b,
+  c: -vec.c,
+  d: -vec.d,
+});
+
 /**
  * Adds two RailVector4 objects.
  * @param v1 The first vector.
