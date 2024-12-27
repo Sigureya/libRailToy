@@ -1,2 +1,2 @@
 export * from "./railShape";
-export * from "./createShape";
+export * from "./railFactory";
