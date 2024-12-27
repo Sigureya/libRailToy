@@ -1,4 +1,4 @@
-import { RailSegment } from "./railSegment";
+import type { RailSegment } from "./railSegment";
 
 /**
  * @description レールモデル型。この型は不変である。

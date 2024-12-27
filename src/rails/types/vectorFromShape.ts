@@ -1,4 +1,4 @@
-import { RailShape } from "./shape";
+import { type RailShape } from "./shape";
 import {
   normalizedStraightVector,
   RailVector4,

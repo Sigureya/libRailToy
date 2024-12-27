@@ -1,6 +1,6 @@
 // Vitest Test Code
 import { describe, it, expect } from "vitest";
-import { RailVector4 } from "./railVector4";
+import type { RailVector4 } from "./railVector4";
 import { add, subtract, scale, dotProduct, magnitude } from "./utils";
 
 describe("RailVector4 operations", () => {
