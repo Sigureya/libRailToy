@@ -6,6 +6,11 @@ export interface RailShape {
    * @description  円弧の長さ。0の場合それは曲線成分を持たない。値1に付き45度であり、計算の際はarc % 8してテーブル引きする。
    */
   arc: number;
+
+  /**
+   * @description 半径。言い換えると曲率であり、数値が大きいほど緩やかなカーブになる。
+   */
+  radis: number;
   /**
    * @description  直線部分の長さ。0の場合それは直線成分を持たない。arcと組み合わせて極座標へ変換して扱う。
    */
