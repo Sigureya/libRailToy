@@ -13,7 +13,7 @@ export class ShapeFactory {
   zeroShape(): RailShape {
     return {
       arc: 0,
-      radis: 0,
+      curveRate: 0,
       height: 0,
       stationOffset: 0,
       straightLength: 0,
@@ -27,7 +27,10 @@ export class ShapeFactory {
     };
   }
   curve(arc: number) {
-    return this.createShape({ arc });
+    return this.createShape({
+      arc,
+      curveRate: this._constatns.STRAIGHT_LENGTH,
+    });
   }
   straight(scale = 1) {
     return this.createShape({

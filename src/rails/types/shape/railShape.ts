@@ -8,9 +8,9 @@ export interface RailShape {
   arc: number;
 
   /**
-   * @description 半径。言い換えると曲率であり、数値が大きいほど緩やかなカーブになる。
+   * @description 曲率。数値が大きいほど緩やかなカーブになる。曲率は1/半径である。
    */
-  radis: number;
+  curveRate: number;
   /**
    * @description  直線部分の長さ。0の場合それは直線成分を持たない。arcと組み合わせて極座標へ変換して扱う。
    */
