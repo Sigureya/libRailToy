@@ -60,7 +60,7 @@ export function subtract(v1: RailVector4, v2: RailVector4): RailVector4 {
  * @param scalar The scalar value.
  * @returns A new RailVector4 representing the scaled vector.
  */
-export function scale(v: RailVector4, scalar: number): RailVector4 {
+export function scale(v: Readonly<RailVector4>, scalar: number): RailVector4 {
   return {
     a: v.a * scalar,
     b: v.b * scalar,
