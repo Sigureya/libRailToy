@@ -29,14 +29,20 @@ export class ShapeFactory {
   curve(arc: number) {
     return this.createShape({ arc });
   }
-  straight(length = this._constatns.STRAIGHT_LENGTH) {
-    return this.createShape({ straightLength: length });
+  straight() {
+    return this.createShape({
+      straightLength: this._constatns.STRAIGHT_LENGTH,
+    });
   }
   straightHalf() {
-    return this.straight(this._constatns.HALF_STRAIGHT_LENGTH);
+    return this.createShape({
+      straightLength: this._constatns.HALF_STRAIGHT_LENGTH,
+    });
   }
   straightQuarter() {
-    return this.straight(this._constatns.QUARTER_STRAIGHT_LENGTH);
+    return this.createShape({
+      straightLength: this._constatns.QUARTER_STRAIGHT_LENGTH,
+    });
   }
   trackOffset() {
     return this.createShape({
