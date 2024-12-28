@@ -1,4 +1,4 @@
 export * from "./railShape";
-export * from "./railFactory";
+export * from "./shapeFactory";
 export * from "./constants";
 export * from "./convertRailShapeUnits";
