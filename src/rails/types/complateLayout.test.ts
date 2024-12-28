@@ -9,7 +9,7 @@ const curve = factory.curve(1);
 const reverseCurve = factory.curve(-1);
 const straight = factory.straight();
 
-const fillRail = (shape: RailShape, num: number) => {
+const fillRail = (shape: RailShape, num: number): ReadonlyArray<RailShape> => {
   return (new Array(num) as RailShape[]).fill(shape);
 };
 
