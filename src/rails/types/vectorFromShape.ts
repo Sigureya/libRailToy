@@ -10,7 +10,7 @@ export const straightVector = (shape: RailShape): RailVector4 => {
 
 export const curveVector = (shape: RailShape) => {
   const normalVector = normalizedStraightVector(shape.arc);
-  return scale(normalVector.CURVE, shape.radis);
+  return scale(normalVector.CURVE, shape.curveRate);
 };
 export const vectorFromRailShape = (shape: RailShape) =>
   add(straightVector(shape), curveVector(shape));

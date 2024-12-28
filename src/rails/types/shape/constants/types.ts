@@ -3,10 +3,7 @@ export interface RailConstants {
    * @description 軌間
    */
   GAUGE: number;
-  /**
-   * @description 曲線半径
-   */
-  CURVE_RADIUS: number; // 曲線半径
+
   /**
    * @description 直線の長さ
    */
