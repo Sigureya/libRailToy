@@ -1,20 +1,10 @@
 import type { RailVector4 } from "./railVector4";
 import { add, subtract } from "./utils";
 
-/**
- * @description 直線と曲線のベクトルをペアとして生成する。
- */
-const createRailVectorPair = (
-  straight: Readonly<RailVector4>,
-  next: Readonly<RailVector4>
-): {
+interface Pair {
   readonly STRAIGHT: Readonly<RailVector4>;
   readonly CURVE: Readonly<RailVector4>;
-} =>
-({
-  STRAIGHT: straight,
-  CURVE: subtract(next, straight),
-} as const);
+}
 
 /**
  * @description 8方向の専用角度を定義
@@ -28,18 +18,19 @@ const VECTOR_ANGLE_5: Readonly<RailVector4> = { a: 0, b: -1, c: 0, d: 0 }; // �
 const VECTOR_ANGLE_6: Readonly<RailVector4> = { a: 0, b: 0, c: -1, d: 0 }; // 左
 const VECTOR_ANGLE_7: Readonly<RailVector4> = { a: 0, b: 0, c: 0, d: -1 }; // 左上
 
+// ここに回転行列テーブル必要では？
 /**
  * @description 専用角度テーブル
  */
-const VECTOR_ANGLE_TABLE = [
-  createRailVectorPair(VECTOR_ANGLE_0, VECTOR_ANGLE_1), // =>真上ベクトル , 0→1のベクトル
-  createRailVectorPair(VECTOR_ANGLE_1, VECTOR_ANGLE_2), // =>右上ベクトル, 1→2のベクトル
-  createRailVectorPair(VECTOR_ANGLE_2, VECTOR_ANGLE_3), // 右
-  createRailVectorPair(VECTOR_ANGLE_3, VECTOR_ANGLE_4), // 右下
-  createRailVectorPair(VECTOR_ANGLE_4, VECTOR_ANGLE_5), // 真下
-  createRailVectorPair(VECTOR_ANGLE_5, VECTOR_ANGLE_6), // 左下
-  createRailVectorPair(VECTOR_ANGLE_6, VECTOR_ANGLE_7), // 左
-  createRailVectorPair(VECTOR_ANGLE_7, VECTOR_ANGLE_0), // 左上
+const VECTOR_ANGLE_TABLE: ReadonlyArray<Pair> = [
+  { STRAIGHT: VECTOR_ANGLE_0, CURVE: add(VECTOR_ANGLE_0, VECTOR_ANGLE_2) }, // 真上
+  { STRAIGHT: VECTOR_ANGLE_1, CURVE: add(VECTOR_ANGLE_1, VECTOR_ANGLE_3) }, // 右上
+  { STRAIGHT: VECTOR_ANGLE_2, CURVE: add(VECTOR_ANGLE_2, VECTOR_ANGLE_4) }, // 右
+  { STRAIGHT: VECTOR_ANGLE_3, CURVE: add(VECTOR_ANGLE_3, VECTOR_ANGLE_5) }, // 右下
+  { STRAIGHT: VECTOR_ANGLE_4, CURVE: add(VECTOR_ANGLE_4, VECTOR_ANGLE_6) }, // 真下
+  { STRAIGHT: VECTOR_ANGLE_5, CURVE: add(VECTOR_ANGLE_5, VECTOR_ANGLE_7) }, // 左下
+  { STRAIGHT: VECTOR_ANGLE_6, CURVE: add(VECTOR_ANGLE_6, VECTOR_ANGLE_0) }, // 左
+  { STRAIGHT: VECTOR_ANGLE_7, CURVE: add(VECTOR_ANGLE_7, VECTOR_ANGLE_1) }, // 左上
 ] as const;
 
 /**
@@ -61,12 +52,9 @@ export const normalizedStraightVector = (angle: number) => {
  * @returns 曲線移動のベクトル
  */
 export const calculateCurveVector = (
-  angleStart: number,
-  angleEnd: number
+  angleStart: number
 ): Readonly<RailVector4> => {
-  const startVector = normalizedStraightVector(angleStart).CURVE;
-  const endVector = normalizedStraightVector(angleEnd).CURVE;
-  return add(startVector, endVector);
+  return normalizedStraightVector(angleStart).CURVE;
 };
 
 // angleが負の値なら、逆ベクトルにしておきたい
