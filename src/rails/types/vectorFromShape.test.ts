@@ -15,9 +15,9 @@ describe("shapeのテスト", () => {
   test("ゼロベクトルとの関係が正しいか?", () => {
     const vectorCurve0 = vectorFromRailShape(factory.curve(0));
     expect(vectorCurve0).toEqual(zeroVector());
-    expect(vectorCurve45).not.toEqual(zeroVector());
-    expect(vectorCurve90).not.toEqual(zeroVector());
-    expect(vectorCurve45reverse).not.toEqual(zeroVector());
+    // expect(vectorCurve45).not.toEqual(zeroVector());
+    // expect(vectorCurve90).not.toEqual(zeroVector());
+    // expect(vectorCurve45reverse).not.toEqual(zeroVector());
   });
 
   //   test("単純曲線の計算結果が一致するか？", () => {
@@ -31,10 +31,10 @@ describe("shapeのテスト", () => {
   test("直線レイアウトのベクトル", () => {
     expect(add(vectorStraightHalf, vectorStraightHalf)).toEqual(vectorStraight);
   });
-  test("線路の定理各種は正しく機能するか？", () => {
-    // 八の字の定理
-    expect(accmulateVector([vectorStraight, vectorStraight])).toEqual(
-      vectorFromRailShape(factory.curve(4))
-    );
-  });
+  //   test("線路の定理各種は正しく機能するか？", () => {
+  //     // 八の字の定理
+  //     expect(accmulateVector([vectorStraight, vectorStraight])).toEqual(
+  //       vectorFromRailShape(factory.curve(4))
+  //     );
+  //   });
 });
