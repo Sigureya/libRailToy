@@ -1,5 +1,5 @@
 import type { RailConstants } from "./constants";
-import { SIMULATOR_RAIL_CONSTANTS, } from "./constants";
+import { SIMULATOR_RAIL_CONSTANTS } from "./constants";
 import type { RailShape } from "./railShape";
 
 export class ShapeFactory {
@@ -20,7 +20,7 @@ export class ShapeFactory {
       trackOffset: 0,
     };
   }
-  createShape(shape: Partial<RailShape>) {
+  createShape(shape: Partial<RailShape>): RailShape {
     return {
       ...this.zeroShape(),
       ...shape,
@@ -29,14 +29,20 @@ export class ShapeFactory {
   curve(arc: number) {
     return this.createShape({ arc });
   }
-  straight(length = this._constatns.STRAIGHT_LENGTH) {
-    return this.createShape({ straightLength: length });
+  straight(scale = 1) {
+    return this.createShape({
+      straightLength: this._constatns.STRAIGHT_LENGTH * scale,
+    });
   }
-  straightHalf() {
-    return this.straight(this._constatns.HALF_STRAIGHT_LENGTH);
+  straightHalf(scale = 1) {
+    return this.createShape({
+      straightLength: this._constatns.HALF_STRAIGHT_LENGTH * scale,
+    });
   }
-  straightQuarter() {
-    return this.straight(this._constatns.QUARTER_STRAIGHT_LENGTH);
+  straightQuarter(scale = 1) {
+    return this.createShape({
+      straightLength: this._constatns.QUARTER_STRAIGHT_LENGTH * scale,
+    });
   }
   trackOffset() {
     return this.createShape({
