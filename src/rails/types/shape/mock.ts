@@ -9,8 +9,25 @@ export const MockStraight: Readonly<RailShape> = {
   straightLength: 12,
   trackOffset: 0,
 };
+export const MockCurve0: Readonly<RailShape> = {
+  arc: 0,
+  height: 0,
+  curveRate: 12,
+  stationOffset: 0,
+  straightLength: 0,
+  trackOffset: 0,
+};
+
 export const MockCurve45: Readonly<RailShape> = {
   arc: 1,
+  height: 0,
+  curveRate: 12,
+  stationOffset: 0,
+  straightLength: 0,
+  trackOffset: 0,
+};
+export const MockCurve45reverse: Readonly<RailShape> = {
+  arc: -1,
   height: 0,
   curveRate: 12,
   stationOffset: 0,
