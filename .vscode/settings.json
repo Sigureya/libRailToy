@@ -21,6 +21,5 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ],
-  "typescript.preferences.importModuleSpecifier": "shortest"
+  ]
 }
