@@ -12,6 +12,18 @@ export const reverse = (vec: RailVector4): RailVector4 => ({
   d: -vec.d,
 });
 
+export const accmulateVector = (
+  vector: ReadonlyArray<Readonly<RailVector4>>
+) => {
+  return vector.reduce<RailVector4>((v1, v2) => {
+    v1.a += v2.a;
+    v1.b += v2.b;
+    v1.c += v2.c;
+    v1.d += v2.d;
+    return v1;
+  }, zeroVector());
+};
+
 /**
  * Adds two RailVector4 objects.
  * @param v1 The first vector.
