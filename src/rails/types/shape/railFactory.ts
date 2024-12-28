@@ -20,7 +20,7 @@ export class ShapeFactory {
       trackOffset: 0,
     };
   }
-  createShape(shape: Partial<RailShape>) {
+  createShape(shape: Partial<RailShape>): RailShape {
     return {
       ...this.zeroShape(),
       ...shape,
