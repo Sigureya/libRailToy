@@ -2,7 +2,6 @@ import type { RailConstants } from "./types";
 
 export const SIMULATOR_RAIL_CONSTANTS: Readonly<RailConstants> = {
   GAUGE: 1,
-  CURVE_RADIUS: 12,
   STRAIGHT_LENGTH: 12,
   HALF_STRAIGHT_LENGTH: 6,
   QUARTER_STRAIGHT_LENGTH: 3,
