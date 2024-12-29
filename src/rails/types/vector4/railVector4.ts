@@ -29,7 +29,7 @@ export interface UnitRailVector4 {
 /**
  * @description 特定の向きを基準にした、前後左右のベクトル。
  */
-export interface DirectionVectors {
+export interface DirectionalUnitVectors {
   forward: UnitRailVector4;
   right: UnitRailVector4;
   back: UnitRailVector4;
