@@ -18,8 +18,15 @@ export interface RailVector4 {
 }
 
 export interface UnitRailVector4 {
-  a: -1 | 0 | 1;
-  b: -1 | 0 | 1;
-  c: -1 | 0 | 1;
-  d: -1 | 0 | 1;
+  readonly a: -1 | 0 | 1;
+  readonly b: -1 | 0 | 1;
+  readonly c: -1 | 0 | 1;
+  readonly d: -1 | 0 | 1;
+}
+
+export interface GGG {
+  forward: UnitRailVector4;
+  right: UnitRailVector4;
+  back: UnitRailVector4;
+  left: UnitRailVector4;
 }

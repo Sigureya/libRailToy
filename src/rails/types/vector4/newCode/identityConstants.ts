@@ -1,6 +1,6 @@
-import type { IdentityRailVector4 } from "../railVector4";
+import type { UnitRailVector4 } from "../railVector4";
 
-type Vec4 = IdentityRailVector4;
+type Vec4 = UnitRailVector4;
 /**
  * @description 8方向の専用角度を定義
  */
