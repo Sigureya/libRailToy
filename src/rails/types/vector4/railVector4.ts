@@ -17,14 +17,19 @@ export interface RailVector4 {
   d: number;
 }
 
+/**
+ * @description 基準ベクトル。おおむね単位ベクトル。
+ */
 export interface UnitRailVector4 {
   readonly a: -1 | 0 | 1;
   readonly b: -1 | 0 | 1;
   readonly c: -1 | 0 | 1;
   readonly d: -1 | 0 | 1;
 }
-
-export interface GGG {
+/**
+ * @description 特定の向きを基準にした、前後左右のベクトル。
+ */
+export interface DiectionVectors {
   forward: UnitRailVector4;
   right: UnitRailVector4;
   back: UnitRailVector4;
