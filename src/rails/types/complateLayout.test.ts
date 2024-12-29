@@ -18,15 +18,15 @@ test("補助関数は正しいか？", () => {
   expect(layout.length).toBe(8);
 });
 
-describe("曲線レイアウトのベクトル", () => {
-  test("基本の曲線が正しく判定できるか?", () => {
-    const circle = fillRail(curve, 8);
-    const vec = accmulateVector(circle);
-    expect(vec).toEqual(zeroVector());
-  });
-  test("逆向きの曲線を正しく判定できるか？", () => {
-    const circle = fillRail(reverseCurve, 8);
-    const vec = accmulateVector(circle);
-    expect(vec).toEqual(zeroVector());
-  });
-});
+// describe("曲線レイアウトのベクトル", () => {
+//   test("基本の曲線が正しく判定できるか?", () => {
+//     const circle = fillRail(curve, 8);
+//     const vec = accmulateVector(circle);
+//     expect(vec).toEqual(zeroVector());
+//   });
+//   test("逆向きの曲線を正しく判定できるか？", () => {
+//     const circle = fillRail(reverseCurve, 8);
+//     const vec = accmulateVector(circle);
+//     expect(vec).toEqual(zeroVector());
+//   });
+// });

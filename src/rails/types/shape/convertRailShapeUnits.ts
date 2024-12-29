@@ -26,8 +26,8 @@ export const convertRailShapeUnits = (
     sourceUnits,
     targetUnits
   ),
-  curveRate: convertUnitValue(
-    sourceShape.curveRate,
+  curveLength: convertUnitValue(
+    sourceShape.curveLength,
     "STRAIGHT_LENGTH",
     sourceUnits,
     targetUnits

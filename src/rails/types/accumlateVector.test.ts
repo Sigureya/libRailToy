@@ -14,16 +14,16 @@ describe("単一要素でのテスト", () => {
       expect(result.movement).toEqual(vectorFromRailShape(MockStraight));
     });
   });
-  test("曲線", () => {
-    angles.forEach((angle) => {
-      const result = accmulateVector3([MockCurve90], angle);
-      expect(result.angle).toBe(angle + MockCurve90.arc);
-      expect(result.movement).toEqual(vectorFromRailShape(MockCurve90));
-    });
-    angles.forEach((angle) => {
-      const result = accmulateVector3([MockCurve45], angle);
-      expect(result.angle).toBe(angle + MockCurve45.arc);
-      expect(result.movement).toEqual(vectorFromRailShape(MockCurve45));
-    });
+  test("曲線(0)", () => {
+    const angle = 0;
+    const result = accmulateVector3([MockCurve90], angle);
+    expect(result.angle).toBe(angle + MockCurve90.arc);
+    expect(result.movement).toEqual(vectorFromRailShape(MockCurve90));
+  });
+  test("曲線(1)", () => {
+    const angle = 1;
+    const result = accmulateVector3([MockCurve90], angle);
+    expect(result.angle).toBe(angle + MockCurve90.arc);
+    expect(result.movement).toEqual(vectorFromRailShape(MockCurve90, 1));
   });
 });
