@@ -1,7 +1,7 @@
 import { test, expect, describe } from "vitest";
-import { Angle8Class } from "./angle8Class";
+import { CyclicArray } from "./cyclicArray";
 test("shapeのテスト", () => {
-  const angle8 = new Angle8Class(["aa", "bb", "cc", "dd"]);
+  const angle8 = new CyclicArray(["aa", "bb", "cc", "dd"]);
   for (let index = 0; index < 100; index++) {
     expect(angle8.at(index)).not.toBeUndefined();
   }
