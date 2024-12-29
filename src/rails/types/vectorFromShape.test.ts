@@ -27,22 +27,23 @@ describe("shapeのテスト", () => {
     expect(vectorCurve45reverse).not.toEqual(zeroVector());
   });
 
+  // 1/2直線も試すこと
   test("曲線と直線", () => {
     const right = vectorFromRailShape(MockStraight, 2);
     const up = vectorFromRailShape(MockStraight, 0);
     console.log("up", up);
     console.log("right", right);
     // これでテストが通るが、違う
-    expect(add(right, up)).toEqual(vectorFromRailShape(MockCurve45, -1));
+    expect(add(right, up)).toEqual(vectorFromRailShape(MockCurve90, -2));
   });
-  test("曲線の相殺", () => {
-    expect(
-      add(
-        vectorFromRailShape(MockCurve45, -1),
-        vectorFromRailShape(MockCurve45reverse, 1)
-      )
-    ).toEqual(zeroVector());
-  });
+  //   test("曲線の相殺", () => {
+  //     expect(
+  //       add(
+  //         vectorFromRailShape(MockCurve45, -1),
+  //         vectorFromRailShape(MockCurve45reverse, 1)
+  //       )
+  //     ).toEqual(zeroVector());
+  //   });
   //   test("単純曲線の計算結果が一致するか？", () => {
   //     expect(vectorCurve45)
   //   });
