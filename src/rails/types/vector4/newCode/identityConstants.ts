@@ -1,4 +1,4 @@
-import type { RailVector4 } from "./railVector4";
+import type { RailVector4 } from "../railVector4";
 
 type Vec4 = RailVector4;
 /**
