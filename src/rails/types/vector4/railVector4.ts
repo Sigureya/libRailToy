@@ -16,3 +16,10 @@ export interface RailVector4 {
    */
   d: number;
 }
+
+export interface UnitRailVector4 {
+  a: -1 | 0 | 1;
+  b: -1 | 0 | 1;
+  c: -1 | 0 | 1;
+  d: -1 | 0 | 1;
+}
