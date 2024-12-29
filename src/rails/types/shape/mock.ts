@@ -37,7 +37,7 @@ export const MockCurve45reverse: Readonly<RailShape> = {
 export const MockCurve90: Readonly<RailShape> = {
   arc: 2,
   height: 0,
-  curveLength: 12,
+  curveLength: 6,
   stationOffset: 0,
   straightLength: 0,
   trackOffset: 0,
