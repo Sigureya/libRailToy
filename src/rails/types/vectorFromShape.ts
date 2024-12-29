@@ -22,3 +22,7 @@ export const vectorFromRailShape = (shape: RailShape, angle = 0) =>
   add(straightVector(shape, angle), curveVector(shape, angle));
 // railShape[]=>railNodeが必要
 // まず表向きのレールだけ考える
+
+// ベクトルを合成する必要があるので、 ループで対処する。
+// そしてループ処理は重たいので、テーブルで持つ
+// テスト用にテーブル実装を並行して用意する
