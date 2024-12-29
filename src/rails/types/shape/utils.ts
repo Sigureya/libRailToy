@@ -13,9 +13,9 @@ export const straightLength = (shape: RailShape) => {
 //         return shape.radis +
 // }
 
-export const curveLength = (shape: RailShape, unit: RailConstants) => {
-  return (shape.curveRate * 2 * shape.arc * Math.PI) / unit.CURVE_ARC_COUNT;
-};
+// export const curveLength = (shape: RailShape, unit: RailConstants) => {
+//   return (shape.curveRate * 2 * shape.arc * Math.PI) / unit.CURVE_ARC_COUNT;
+// };
 
 export const arcFlipedShape = (shape: RailShape): RailShape => ({
   ...shape,
