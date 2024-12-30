@@ -57,3 +57,27 @@ describe("完全レイアウトを判定できるか？", () => {
     ).toBe(false);
   });
 });
+describe("直線と曲線によるレイアウトを完全判定できるか？", () => {
+  test("オーバル。曲線の中に合計2本の直線があるレイアウト", () => {
+    expect(
+      areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, [
+        MockCurve90,
+        MockCurve90,
+        MockStraight,
+        MockCurve90,
+        MockCurve90,
+        MockStraight,
+      ])
+    ).toBe(true);
+    expect(
+      areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, [
+        MockCurve90,
+        MockCurve90,
+        MockCurve90,
+        MockStraight,
+        MockCurve90,
+        MockStraight,
+      ])
+    ).toBe(false);
+  });
+});
