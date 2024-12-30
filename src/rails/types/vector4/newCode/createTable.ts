@@ -35,7 +35,7 @@ export const createIdentiyVectorTable = (): VectorTable => {
     VECTOR_ANGLE_5,
     VECTOR_ANGLE_6,
     VECTOR_ANGLE_7,
-  ]);
+  ] as const);
 };
 
 /**
@@ -65,4 +65,20 @@ export const createDirections = (
     left: table.at(angle - 2),
     right: table.at(angle + 2),
   };
+};
+
+export const createAngleTableFromUnits = (table: VectorTable) => {
+  return table.map((vec, index, array) => {
+    const straightDirection = createDirections(array, index);
+    const curve = createSinCosTable(straightDirection);
+    return {
+      STRAIGHT: straightDirection,
+      CURVE: curve,
+    } as const;
+  });
+};
+
+export const createAngleTable = () => {
+  const units = createIdentiyVectorTable();
+  return createAngleTableFromUnits(units);
 };

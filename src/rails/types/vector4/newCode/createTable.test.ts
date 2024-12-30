@@ -13,3 +13,8 @@ describe("", () => {
     });
   });
 });
+describe("createDirections", () => {
+  table.array.forEach((v, index, r) => {
+    r[0] = zeroVector();
+  });
+});
