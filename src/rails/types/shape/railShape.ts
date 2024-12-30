@@ -1,3 +1,6 @@
+// 曲線の長さの元が必要
+// 曲線倍率？
+
 /**
  * @description レールの形状
  */
@@ -8,9 +11,9 @@ export interface RailShape {
   arc: number;
 
   /**
-   * @description 曲率。数値が大きいほど緩やかなカーブになる。曲率は1/半径である。
+   * @description 曲線の長さ。ベクトルに変換する際は、(単位ベクトル+単位ベクトル)と乗算される。
    */
-  curveRate: number;
+  curveLength: number;
   /**
    * @description  直線部分の長さ。0の場合それは直線成分を持たない。arcと組み合わせて極座標へ変換して扱う。
    */
