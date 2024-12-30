@@ -1,6 +1,6 @@
-import type { RailVector4 } from "./railVector4";
+import type { RailVector4, UnitRailVector4 } from "./railVector4";
 
-export const zeroVector = (): RailVector4 => ({ a: 0, b: 0, c: 0, d: 0 });
+export const zeroVector = (): UnitRailVector4 => ({ a: 0, b: 0, c: 0, d: 0 });
 
 export const same = (v1: RailVector4, v2: RailVector4) =>
   v1.a === v2.a && v1.b === v2.b && v1.c === v2.c && v1.d && v2.d;
