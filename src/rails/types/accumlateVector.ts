@@ -3,7 +3,7 @@ import { zeroVector } from "./vector4";
 import type { RailTransform } from "./vector4/railTransfrom";
 import { vectorFromRailShape } from "./vectorFromShape";
 
-export const accmulateVector3 = (
+export const accmulateVector = (
   shapes: ReadonlyArray<Readonly<RailShape>>,
   angle = 0
 ) => {
