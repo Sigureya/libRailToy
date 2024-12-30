@@ -4,7 +4,7 @@ import type {
   UnitRailVector4,
 } from "./types/";
 import { CyclicArray } from "./types/";
-import { accmulateVector } from "./types/utils";
+import { accmulateVector } from "./utils";
 
 import {
   VECTOR_ANGLE_0,

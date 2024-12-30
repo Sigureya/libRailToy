@@ -1,5 +1,5 @@
 import { test, expect, describe } from "vitest";
-import { accmulateVector, add, reverse, zeroVector } from "./types/utils";
+import { accmulateVector, add, reverse, zeroVector } from "./utils";
 import { createIdentiyVectorTable } from "./createTable";
 import {
   VECTOR_ANGLE_0,
