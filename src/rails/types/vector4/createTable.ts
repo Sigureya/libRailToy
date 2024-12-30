@@ -2,10 +2,10 @@ import type {
   DirectionalUnitVectors,
   RailVector4,
   UnitRailVector4,
-} from "../railVector4";
-import { accmulateVector } from "../utils";
+} from "./types/";
+import { CyclicArray } from "./types/";
+import { accmulateVector } from "./types/utils";
 
-import { CyclicArray } from "./cyclicArray";
 import {
   VECTOR_ANGLE_0,
   VECTOR_ANGLE_1,
@@ -15,7 +15,7 @@ import {
   VECTOR_ANGLE_5,
   VECTOR_ANGLE_6,
   VECTOR_ANGLE_7,
-} from "./identityConstants";
+} from "./types/identityConstants";
 
 export type VectorTable<Vec> = CyclicArray<
   [Vec, Vec, Vec, Vec, Vec, Vec, Vec, Vec]

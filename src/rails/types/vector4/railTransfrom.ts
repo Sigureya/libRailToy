@@ -1,4 +1,4 @@
-import type { RailVector4 } from "./railVector4";
+import type { RailVector4 } from "./types/railVector4";
 
 export interface RailTransform {
   angle: number;

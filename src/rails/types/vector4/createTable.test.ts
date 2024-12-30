@@ -1,5 +1,5 @@
 import { test, expect, describe } from "vitest";
-import { accmulateVector, add, reverse, zeroVector } from "../utils";
+import { accmulateVector, add, reverse, zeroVector } from "./types/utils";
 import { createIdentiyVectorTable } from "./createTable";
 import {
   VECTOR_ANGLE_0,
@@ -10,7 +10,7 @@ import {
   VECTOR_ANGLE_5,
   VECTOR_ANGLE_6,
   VECTOR_ANGLE_7,
-} from "./identityConstants";
+} from "./types/identityConstants";
 
 describe("単位ベクトルテーブルは正しいか?", () => {
   const table = createIdentiyVectorTable();

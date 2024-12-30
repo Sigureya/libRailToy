@@ -1,4 +1,4 @@
-import { test, expect, describe } from "vitest";
+import { test, expect } from "vitest";
 import { CyclicArray } from "./cyclicArray";
 test("shapeのテスト", () => {
   const angle8 = new CyclicArray(["aa", "bb", "cc", "dd"]);
