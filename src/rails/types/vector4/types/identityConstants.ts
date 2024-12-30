@@ -1,4 +1,4 @@
-import type { UnitRailVector4 } from "../railVector4";
+import type { UnitRailVector4 } from "./railVector4";
 
 type Vec4 = UnitRailVector4;
 export const VECTOR_ANGLE_0: Readonly<Vec4> = { a: 1, b: 0, c: 0, d: 0 }; // 真上

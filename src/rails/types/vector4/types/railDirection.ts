@@ -1,5 +1,5 @@
-import type { DirectionalUnitVectors, UnitRailVector4 } from "../railVector4";
-import type { TableEntry } from "./createTable";
+import type { DirectionalUnitVectors, UnitRailVector4 } from "./railVector4";
+import type { TableEntry } from "../createTable";
 import type { CyclicArray } from "./cyclicArray";
 
 export class RailAngleTable {
