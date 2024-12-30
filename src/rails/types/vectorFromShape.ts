@@ -1,13 +1,7 @@
 import { ANGLE_TABLE } from "./classConstants";
 import type { RailShape } from "./shape";
 import type { RailVector4 } from "./vector4";
-import {
-  add,
-  calculateCurveVector,
-  normalizedStraightVector,
-  scale,
-  zeroVector,
-} from "./vector4";
+import { add, scale } from "./vector4";
 
 // とりあえず直線成分だけ取得してみる
 export const straightVector = (shape: RailShape, angle = 0): RailVector4 => {
