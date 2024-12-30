@@ -12,7 +12,7 @@ export const sameAngle = (
   );
 };
 
-export const areComplateLayout = (
+export const areCompleteLayout = (
   unit: RailConstants,
   shapes: ReadonlyArray<Readonly<RailShape>>,
   angle = 0
