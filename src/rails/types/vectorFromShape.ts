@@ -1,3 +1,4 @@
+import { ANGLE_TABLE } from "./classConstants";
 import type { RailShape } from "./shape";
 import type { RailVector4 } from "./vector4";
 import {
@@ -10,13 +11,12 @@ import {
 
 // とりあえず直線成分だけ取得してみる
 export const straightVector = (shape: RailShape, angle = 0): RailVector4 => {
-  const normalVector = normalizedStraightVector(angle);
-  return scale(normalVector.STRAIGHT, shape.straightLength);
+  return scale(ANGLE_TABLE.straight(angle), shape.straightLength);
 };
 
 export const curveVector = (shape: RailShape, angle = 0) => {
-  const normalVector = calculateCurveVector(angle + shape.arc);
-  return scale(normalVector, shape.curveLength * shape.arc);
+  const n = ANGLE_TABLE.curve(angle, shape.arc);
+  return scale(n, shape.curveLength * shape.arc);
 };
 export const vectorFromRailShape = (shape: RailShape, angle = 0) =>
   add(straightVector(shape, angle), curveVector(shape, angle));
