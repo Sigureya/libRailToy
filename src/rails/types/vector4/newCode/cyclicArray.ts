@@ -11,11 +11,13 @@ export class CyclicArray<T, A extends unknown[] = AddArray<T>> {
     });
     return new CyclicArray(list);
   }
-  at(angle: number): A[number] {
+  calcIndex(angle: number) {
     const length = this._table.length;
     const result = angle % length;
-    const index = result < 0 ? result + length : result;
-    return this._table[index];
+    return result < 0 ? result + length : result;
+  }
+  at(angle: number): A[number] {
+    return this._table[this.calcIndex(angle)];
   }
   get array() {
     return this._table;
