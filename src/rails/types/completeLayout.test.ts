@@ -1,5 +1,5 @@
 import { test, expect, describe } from "vitest";
-import { areCompleteLayout, sameAngle } from "./completeLayout2";
+import { areCompleteLayout, sameAngle } from "./completeLayout";
 import { SIMULATOR_RAIL_CONSTANTS } from "./shape";
 import { MockCurve90, MockCurve90reverse, MockStraight } from "./shape/mock";
 describe("sameAngle", () => {
