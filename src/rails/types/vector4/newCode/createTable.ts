@@ -1,4 +1,8 @@
-import type { DirectionalUnitVectors, UnitRailVector4 } from "../railVector4";
+import type {
+  DirectionalUnitVectors,
+  RailVector4,
+  UnitRailVector4,
+} from "../railVector4";
 import { accmulateVector } from "../utils";
 
 import { CyclicArray } from "./cyclicArray";
@@ -13,19 +17,12 @@ import {
   VECTOR_ANGLE_7,
 } from "./identityConstants";
 
-type VectorTable = CyclicArray<
-  [
-    UnitRailVector4,
-    UnitRailVector4,
-    UnitRailVector4,
-    UnitRailVector4,
-    UnitRailVector4,
-    UnitRailVector4,
-    UnitRailVector4,
-    UnitRailVector4
-  ]
+export type VectorTable<Vec> = CyclicArray<
+  [Vec, Vec, Vec, Vec, Vec, Vec, Vec, Vec]
 >;
-export const createIdentiyVectorTable = (): VectorTable => {
+export type UnitVectorTable = VectorTable<UnitRailVector4>;
+
+export const createIdentiyVectorTable = (): UnitVectorTable => {
   return new CyclicArray([
     VECTOR_ANGLE_0,
     VECTOR_ANGLE_1,
@@ -56,7 +53,7 @@ export const createSinCosTable = (arg: DirectionalUnitVectors) => {
 };
 
 export const createDirections = (
-  table: VectorTable,
+  table: UnitVectorTable,
   angle: number
 ): DirectionalUnitVectors => {
   return {
@@ -67,7 +64,9 @@ export const createDirections = (
   };
 };
 
-export const createAngleTableFromUnits = (table: VectorTable) => {
+export const createAngleTableFromUnits = (
+  table: UnitVectorTable
+): CyclicArray<TableEntry> => {
   return table.map((vec, index, array) => {
     const straightDirection = createDirections(array, index);
     const curve = createSinCosTable(straightDirection);
@@ -78,6 +77,10 @@ export const createAngleTableFromUnits = (table: VectorTable) => {
   });
 };
 
+export interface TableEntry {
+  STRAIGHT: DirectionalUnitVectors;
+  CURVE: CyclicArray<RailVector4>;
+}
 export const createAngleTable = () => {
   const units = createIdentiyVectorTable();
   return createAngleTableFromUnits(units);
