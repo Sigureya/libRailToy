@@ -1,4 +1,4 @@
-import type { RailVector4, UnitRailVector4 } from "./railVector4";
+import type { RailVector4, UnitRailVector4 } from "./types/railVector4";
 
 export const zeroVector = (): UnitRailVector4 => ({ a: 0, b: 0, c: 0, d: 0 });
 
