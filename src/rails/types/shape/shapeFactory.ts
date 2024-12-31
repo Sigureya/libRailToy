@@ -29,7 +29,7 @@ export class ShapeFactory {
   curve(arc: number) {
     return this.createShape({
       arc,
-      curveLength: this._constatns.HALF_STRAIGHT_LENGTH,
+      curveLength: this._constatns.STRAIGHT_LENGTH,
     });
   }
   straight(scale = 1) {

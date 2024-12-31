@@ -1,12 +1,33 @@
 import { test, expect, describe } from "vitest";
-import { accmulateVector } from "./accumlateVector";
-import { MockCurve45, MockCurve90, MockStraight } from "./shape/mock";
+import { accmulateVector, nextPosition } from "./accumlateVector";
+import {
+  MockCurve45,
+  MockCurve90,
+  MockCurve90reverse,
+  MockStraight,
+  MockStraightLong,
+} from "./shape/mock";
 import { vectorFromRailShape } from "./vectorFromShape";
-import { zeroVector } from "./vector4";
+import { ZERO_VECTOR, zeroVector } from "./vector4";
 
 const angles = [
   -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 259, 235, 353,
 ] as const;
+describe("nextPositonの結果は正しいか？", () => {
+  test("直線レールの加算", () => {
+    const angle = 2;
+    expect(ZERO_VECTOR).toEqual(zeroVector());
+    const next1 = nextPosition({ angle, movement: ZERO_VECTOR }, MockStraight);
+    // 間違えて書き変わってないか判定
+    expect(ZERO_VECTOR).toEqual(zeroVector());
+    expect(next1).toEqual(accmulateVector([MockStraight], angle));
+    const next2 = nextPosition(next1, MockStraight);
+    expect(next2.movement).toEqual(
+      vectorFromRailShape(MockStraightLong, angle)
+    );
+  });
+});
+
 describe("単一要素でのテスト", () => {
   test("直線", () => {
     angles.forEach((angle) => {
@@ -33,3 +54,19 @@ describe("単一要素でのテスト", () => {
     expect(result.movement).toEqual(zeroVector());
   });
 });
+// test("曲線と直線の混合", () => {
+//   const straight = accmulateVector([
+//     MockStraight,
+//     MockStraight,
+//     MockStraight,
+//     MockStraight,
+//   ]);
+//   const curve = accmulateVector([
+//     MockCurve90,
+//     MockCurve90reverse,
+//     MockCurve90reverse,
+//     MockCurve90,
+//   ]);
+//   expect(straight.angle).toEqual(curve.angle);
+//   expect(straight.movement).toEqual(curve.movement);
+// });

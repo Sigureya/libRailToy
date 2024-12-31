@@ -1,6 +1,10 @@
 import type { RailShape } from "./shape";
-import { zeroVector } from "./vector4";
-import type { RailTransform } from "./vector4/railTransfrom";
+import type { RailVector4 } from "./vector4";
+import { add, zeroVector } from "./vector4";
+import type {
+  RailTransform,
+  ReadonlyRailTransform,
+} from "./vector4/railTransfrom";
 import { vectorFromRailShape } from "./vectorFromShape";
 
 export const accmulateVector = (
@@ -23,4 +27,32 @@ export const accmulateVector = (
   }
 
   return result;
+};
+
+export const nextPosition = (
+  prevPosition: ReadonlyRailTransform,
+  shape: RailShape
+): RailTransform => {
+  return {
+    angle: prevPosition.angle + shape.arc,
+    movement: add(
+      prevPosition.movement,
+      vectorFromRailShape(shape, prevPosition.angle)
+    ),
+  };
+};
+
+const mapVector = (shapes: ReadonlyArray<Readonly<RailShape>>, angle = 0) => {
+  let pre: { readonly angle: number; movement: Readonly<RailVector4> } = {
+    angle: angle,
+    movement: zeroVector(),
+  };
+  return shapes.map<RailTransform>((shape) => {
+    const vector = vectorFromRailShape(shape, pre.angle);
+    pre = {
+      angle: shape.arc + pre.angle,
+      movement: vector,
+    };
+    return pre;
+  });
 };
