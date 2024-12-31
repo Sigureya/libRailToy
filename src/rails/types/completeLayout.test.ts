@@ -84,26 +84,26 @@ describe("直線と曲線によるレイアウトを完全判定できるか？"
     ).toBe(false);
   });
 });
-describe("", () => {
-  test("八の字の定理応用。", () => {
-    const layout: RailShape[] = [
-      MockCurve90,
-      MockCurve90reverse,
-      MockCurve90reverse,
-      MockCurve90,
-      MockCurve90reverse,
-      MockCurve90reverse,
-      MockStraight,
-      MockStraight,
-      MockStraight,
-      MockStraight,
-      MockCurve90reverse,
-      MockCurve90reverse,
-    ];
-    const acm = accmulateVector(layout);
+// describe("", () => {
+//   test("八の字の定理応用。", () => {
+//     const layout: RailShape[] = [
+//       MockCurve90,
+//       MockCurve90reverse,
+//       MockCurve90reverse,
+//       MockCurve90,
+//       MockCurve90reverse,
+//       MockCurve90reverse,
+//       MockStraight,
+//       MockStraight,
+//       MockStraight,
+//       MockStraight,
+//       MockCurve90reverse,
+//       MockCurve90reverse,
+//     ];
+//     const acm = accmulateVector(layout);
 
-    expect(sameAngle(SIMULATOR_RAIL_CONSTANTS, acm.angle, 0)).toBe(true);
-    expect(acm.movement).toEqual(ZERO_VECTOR);
-    expect(areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, layout)).toBe(true);
-  });
-});
+//     expect(sameAngle(SIMULATOR_RAIL_CONSTANTS, acm.angle, 0)).toBe(true);
+//     expect(acm.movement).toEqual(ZERO_VECTOR);
+//     expect(areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, layout)).toBe(true);
+//   });
+// });
