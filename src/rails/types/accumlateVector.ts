@@ -1,6 +1,6 @@
 import type { RailShape } from "./shape";
 import type { RailVector4 } from "./vector4";
-import { zeroVector } from "./vector4";
+import { add, zeroVector } from "./vector4";
 import type {
   RailTransform,
   ReadonlyRailTransform,
@@ -35,7 +35,10 @@ export const nextPosition = (
 ): RailTransform => {
   return {
     angle: prevPosition.angle + shape.arc,
-    movement: vectorFromRailShape(shape, prevPosition.angle),
+    movement: add(
+      prevPosition.movement,
+      vectorFromRailShape(shape, prevPosition.angle)
+    ),
   };
 };
 
