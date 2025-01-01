@@ -45,7 +45,7 @@ export const nextPosition = (
 export const mapVector = (
   shapes: ReadonlyArray<Readonly<RailShape>>,
   angle = 0
-) => {
+): RailTransform[] => {
   let pre: ReadonlyRailTransform = {
     angle: angle,
     movement: zeroVector(),
@@ -54,7 +54,7 @@ export const mapVector = (
     const vector = vectorFromRailShape(shape, pre.angle);
     pre = {
       angle: shape.arc + pre.angle,
-      movement: vector,
+      movement: add(pre.movement, vector),
     };
     return pre;
   });
