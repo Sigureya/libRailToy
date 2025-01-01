@@ -23,7 +23,7 @@ export const straightVector = (
  * @param startAngle 開始地点の角度
  * @returns
  */
-export const curveVector = (shape: RailShape, startAngle = 0) => {
+export const curveVector = (shape: RailShape, startAngle = 0): RailVector4 => {
   const begin = ANGLE_TABLE.straight(startAngle);
   const end = ANGLE_TABLE.straight(startAngle + shape.arc);
   const acm = add(begin, end);
@@ -35,5 +35,9 @@ export const curveVector = (shape: RailShape, startAngle = 0) => {
  * @param startAngle 開始地点の角度
  * @returns
  */
-export const vectorFromRailShape = (shape: RailShape, startAngle = 0) =>
-  add(straightVector(shape, startAngle), curveVector(shape, startAngle));
+export const vectorFromRailShape = (
+  shape: RailShape,
+  startAngle = 0
+): RailVector4 => {
+  return add(straightVector(shape, startAngle), curveVector(shape, startAngle));
+};
