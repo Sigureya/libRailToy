@@ -17,7 +17,7 @@ import {
   MockCurve90reverse,
   MockStraight,
   MockStraightLong,
-} from "./shape/mock";
+} from "./shape/mockShape";
 const factory = new ShapeFactory();
 const vectorCurve45 = vectorFromRailShape(MockCurve45);
 const vectorCurve90 = vectorFromRailShape(MockCurve90);

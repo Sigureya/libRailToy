@@ -4,7 +4,7 @@ import {
   MockCurve90,
   MockShapeFactory,
   MockStraight,
-} from "./mock";
+} from "./mockShape";
 describe("レール製造テスト", () => {
   test("直線", () => {
     expect(MockShapeFactory.straight()).toEqual(MockStraight);
