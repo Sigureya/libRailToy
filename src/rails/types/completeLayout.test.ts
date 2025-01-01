@@ -7,9 +7,10 @@ import {
   MockCurve90,
   MockCurve90reverse,
   MockStraight,
-} from "./shape/mock";
+} from "./shape/mockShape";
 import { accmulateVector } from "./accumlateVector";
 import { ZERO_VECTOR } from "./vector4";
+import { MockLayoutCircle } from "./shape/mockLayout";
 describe("sameAngle", () => {
   test("角度が異なる場合を正しく判定できるか？", () => {
     expect(sameAngle(SIMULATOR_RAIL_CONSTANTS, 4, 9)).toBe(false);
@@ -47,14 +48,9 @@ describe("不完全レイアウトを判定できるか？", () => {
 });
 describe("完全レイアウトを判定できるか？", () => {
   test("90度曲線レール", () => {
-    expect(
-      areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, [
-        MockCurve90,
-        MockCurve90,
-        MockCurve90,
-        MockCurve90,
-      ])
-    ).toBe(true);
+    expect(areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, MockLayoutCircle)).toBe(
+      true
+    );
     expect(
       areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, [
         MockCurve90,
