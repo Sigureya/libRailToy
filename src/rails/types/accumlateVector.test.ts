@@ -61,9 +61,9 @@ describe("座標への変換の確認", () => {
     ]);
     expect(positions.length).toBe(3);
     const expectedPositions: RailTransform[] = [
-      { movement: { a: 24, b: 0, c: 0, d: 0 }, angle: 0 },
-      { movement: { a: 48, b: 0, c: -24, d: 0 }, angle: 2 },
-      { movement: { a: 48, b: 0, c: -48, d: 0 }, angle: 2 },
+      { angle: 0, movement: { a: 24, b: 0, c: 0, d: 0 } },
+      { angle: -2, movement: { a: 48, b: 0, c: -24, d: 0 } },
+      { angle: -2, movement: { a: 48, b: 0, c: -48, d: 0 } },
     ];
     console.table(positions.map(flat));
     expect(positions).toEqual(expectedPositions);
