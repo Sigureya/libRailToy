@@ -13,7 +13,8 @@ module.exports = {
         prefer: "type-imports",
       },
     ],
-
+    curly: ["error", "all"],
+    "no-empty": ["warn", { allowEmptyCatch: true }],
     "spaced-comment": "error",
   },
 };
