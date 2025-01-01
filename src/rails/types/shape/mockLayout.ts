@@ -1,4 +1,9 @@
-import { MockCurve45, MockCurve90, MockStraight } from "./mockShape";
+import {
+  MockCurve45,
+  MockCurve90,
+  MockCurve90reverse,
+  MockStraight,
+} from "./mockShape";
 
 export const MockLayoutStraight3 = [
   MockStraight,
@@ -45,12 +50,16 @@ export const MockLayoutCircle90x4 = [
   MockCurve90,
   MockCurve90,
 ] as const;
+export const MockLayoutCircle90x4reverse = [
+  MockCurve90reverse,
+  MockCurve90reverse,
+  MockCurve90reverse,
+  MockCurve90reverse,
+] as const;
 
 export const MockLayoutOval = [
-  MockCurve45,
-  MockCurve45,
-  MockCurve45,
-  MockCurve45,
+  MockCurve90,
+  MockCurve90,
   MockStraight,
   MockCurve90,
   MockCurve90,
