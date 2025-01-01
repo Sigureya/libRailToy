@@ -92,19 +92,19 @@ describe("単一要素でのテスト", () => {
     expect(result.movement).toEqual(zeroVector());
   });
 });
-// test("曲線と直線の混合", () => {
-//   const straight = accmulateVector([
-//     MockStraight,
-//     MockStraight,
-//     MockStraight,
-//     MockStraight,
-//   ]);
-//   const curve = accmulateVector([
-//     MockCurve90,
-//     MockCurve90reverse,
-//     MockCurve90reverse,
-//     MockCurve90,
-//   ]);
-//   expect(straight.angle).toEqual(curve.angle);
-//   expect(straight.movement).toEqual(curve.movement);
-// });
+test("曲線と直線の混合", () => {
+  const straight = accmulateVector([
+    MockStraight,
+    MockStraight,
+    MockStraight,
+    MockStraight,
+  ]);
+  const curve = accmulateVector([
+    MockCurve90,
+    MockCurve90reverse,
+    MockCurve90reverse,
+    MockCurve90,
+  ]);
+  expect(straight.angle).toEqual(curve.angle);
+  expect(straight.movement).toEqual(curve.movement);
+});
