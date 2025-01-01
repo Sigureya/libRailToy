@@ -13,7 +13,7 @@ export const curveVector = (shape: RailShape, angle = 0) => {
   const begin = ANGLE_TABLE.straight(angle);
   const end = ANGLE_TABLE.straight(angle + shape.arc);
   const acm = add(begin, end);
-  return scale(acm, shape.curveLength * shape.arc);
+  return scale(acm, shape.curveLength * Math.abs(shape.arc));
 };
 export const vectorFromRailShape = (shape: RailShape, angle = 0) =>
   add(straightVector(shape, angle), curveVector(shape, angle));

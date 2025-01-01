@@ -8,7 +8,8 @@ import {
   MockStraightLong,
 } from "./shape/mockShape";
 import { vectorFromRailShape } from "./vectorFromShape";
-import { RailVector4, ZERO_VECTOR, zeroVector } from "./vector4";
+import type { RailTransform, RailVector4 } from "./vector4";
+import { ZERO_VECTOR, zeroVector } from "./vector4";
 import { MockLayoutCircle90x4, MockLayoutStraight3 } from "./shape/mockLayout";
 import { flat } from "./vector4/railTransfrom";
 
@@ -42,13 +43,30 @@ describe("座標への変換の確認", () => {
     expect(positions.map((t) => t.movement)).toEqual(expectedPositions);
   });
   test("直線・90度カーブ・直線", () => {
+    const positions = mapVector([MockStraight, MockCurve90, MockStraight]);
+    expect(positions.length).toBe(3);
+    console.table(positions.map(flat));
+    const expectedPositions: RailTransform[] = [
+      { movement: { a: 24, b: 0, c: 0, d: 0 }, angle: 0 },
+      { movement: { a: 48, b: 0, c: 24, d: 0 }, angle: 2 },
+      { movement: { a: 48, b: 0, c: 48, d: 0 }, angle: 2 },
+    ];
+    expect(positions).toEqual(expectedPositions);
+  });
+  test("直線・-90度カーブ・直線", () => {
     const positions = mapVector([
       MockStraight,
       MockCurve90reverse,
       MockStraight,
     ]);
     expect(positions.length).toBe(3);
+    const expectedPositions: RailTransform[] = [
+      { movement: { a: 24, b: 0, c: 0, d: 0 }, angle: 0 },
+      { movement: { a: 48, b: 0, c: -24, d: 0 }, angle: 2 },
+      { movement: { a: 48, b: 0, c: -48, d: 0 }, angle: 2 },
+    ];
     console.table(positions.map(flat));
+    expect(positions).toEqual(expectedPositions);
   });
 });
 // describe("座標への変換", () => {});

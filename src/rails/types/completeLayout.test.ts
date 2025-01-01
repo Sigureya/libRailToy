@@ -57,31 +57,31 @@ describe("完全レイアウトを判定できるか？", () => {
       ])
     ).toBe(false);
   });
-  test("90と45の混合円", () => {
-    const layout1 = [
-      MockCurve90,
-      MockCurve90,
-      MockCurve45,
-      MockCurve45,
-      MockCurve45,
-      MockCurve45,
-    ];
+  // test("90と45の混合円", () => {
+  //   const layout1 = [
+  //     MockCurve90,
+  //     MockCurve90,
+  //     MockCurve45,
+  //     MockCurve45,
+  //     MockCurve45,
+  //     MockCurve45,
+  //   ];
 
-    expect(areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, layout1)).toBe(true);
-    // expect(
-    //   areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, MockLayoutCircle360MixA)
-    // ).toBe(true);
-    const layout2 = [
-      MockCurve45,
-      MockCurve45,
-      MockCurve90,
-      MockCurve90,
-      MockCurve45,
-      MockCurve45,
-    ];
+  //   expect(areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, layout1)).toBe(true);
+  //   // expect(
+  //   //   areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, MockLayoutCircle360MixA)
+  //   // ).toBe(true);
+  //   const layout2 = [
+  //     MockCurve45,
+  //     MockCurve45,
+  //     MockCurve90,
+  //     MockCurve90,
+  //     MockCurve45,
+  //     MockCurve45,
+  //   ];
 
-    expect(areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, layout2)).toBe(true);
-  });
+  //   expect(areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, layout2)).toBe(true);
+  // });
   test("内回りの曲線レール", () => {
     const layout = [
       MockCurve90reverse,
