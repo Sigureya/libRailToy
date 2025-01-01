@@ -9,7 +9,7 @@ import {
 } from "./shape/mockShape";
 import { vectorFromRailShape } from "./vectorFromShape";
 import { ZERO_VECTOR, zeroVector } from "./vector4";
-import { MockLayoutCircle } from "./shape/mockLayout";
+import { MockLayoutCircle90x4 } from "./shape/mockLayout";
 
 const angles = [
   -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 259, 235, 353,
@@ -47,7 +47,7 @@ describe("単一要素でのテスト", () => {
     }
   });
   test("複数の曲線をつなげても動くか", () => {
-    const result = accmulateVector(MockLayoutCircle);
+    const result = accmulateVector(MockLayoutCircle90x4);
     expect(result.angle % 8).toBe(0);
     expect(result.movement).toEqual(zeroVector());
   });

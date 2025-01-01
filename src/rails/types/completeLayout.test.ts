@@ -10,7 +10,12 @@ import {
 } from "./shape/mockShape";
 import { accmulateVector } from "./accumlateVector";
 import { ZERO_VECTOR } from "./vector4";
-import { MockLayoutCircle } from "./shape/mockLayout";
+import {
+  MockLayoutCircle270,
+  MockLayoutCircle90x4,
+  MockLayoutCircle360MixA,
+  MockLayoutStraight3,
+} from "./shape/mockLayout";
 describe("sameAngle", () => {
   test("角度が異なる場合を正しく判定できるか？", () => {
     expect(sameAngle(SIMULATOR_RAIL_CONSTANTS, 4, 9)).toBe(false);
@@ -29,28 +34,20 @@ describe("sameAngle", () => {
 describe("不完全レイアウトを判定できるか？", () => {
   test("曲線レール", () => {
     expect(
-      areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, [
-        MockCurve90,
-        MockCurve90,
-        MockCurve90,
-      ])
+      areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, MockLayoutCircle270)
     ).toBe(false);
   });
   test("直線レールだけ", () => {
     expect(
-      areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, [
-        MockStraight,
-        MockStraight,
-        MockStraight,
-      ])
+      areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, MockLayoutStraight3)
     ).toBe(false);
   });
 });
 describe("完全レイアウトを判定できるか？", () => {
   test("90度曲線レール", () => {
-    expect(areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, MockLayoutCircle)).toBe(
-      true
-    );
+    expect(
+      areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, MockLayoutCircle90x4)
+    ).toBe(true);
     expect(
       areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, [
         MockCurve90,
@@ -71,6 +68,9 @@ describe("完全レイアウトを判定できるか？", () => {
     ];
 
     expect(areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, layout1)).toBe(true);
+    expect(
+      areCompleteLayout(SIMULATOR_RAIL_CONSTANTS, MockLayoutCircle360MixA)
+    ).toBe(true);
     const layout2 = [
       MockCurve45,
       MockCurve45,
