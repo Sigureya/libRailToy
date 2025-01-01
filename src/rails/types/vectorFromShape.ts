@@ -9,10 +9,11 @@ export const straightVector = (shape: RailShape, angle = 0): RailVector4 => {
   return scale(ANGLE_TABLE.straight(angle), shape.straightLength * 2);
 };
 
-// arcを引いてから計算するべき。そうすればレールを回転できる
 export const curveVector = (shape: RailShape, angle = 0) => {
-  const normalVector = ANGLE_TABLE.curve(angle, angle + shape.arc);
-  return scale(normalVector, shape.curveLength * shape.arc);
+  const begin = ANGLE_TABLE.straight(angle);
+  const end = ANGLE_TABLE.straight(angle + shape.arc);
+  const acm = add(begin, end);
+  return scale(acm, shape.curveLength * shape.arc);
 };
 export const vectorFromRailShape = (shape: RailShape, angle = 0) =>
   add(straightVector(shape, angle), curveVector(shape, angle));
