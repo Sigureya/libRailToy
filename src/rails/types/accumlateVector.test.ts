@@ -1,5 +1,5 @@
 import { test, expect, describe } from "vitest";
-import { accmulateVector, nextPosition } from "./accumlateVector";
+import { accmulateVector, mapVector, nextPosition } from "./accumlateVector";
 import {
   MockCurve45,
   MockCurve90,
@@ -8,8 +8,9 @@ import {
   MockStraightLong,
 } from "./shape/mockShape";
 import { vectorFromRailShape } from "./vectorFromShape";
-import { ZERO_VECTOR, zeroVector } from "./vector4";
-import { MockLayoutCircle90x4 } from "./shape/mockLayout";
+import { RailVector4, ZERO_VECTOR, zeroVector } from "./vector4";
+import { MockLayoutCircle90x4, MockLayoutStraight3 } from "./shape/mockLayout";
+import { flat } from "./vector4/railTransfrom";
 
 const angles = [
   -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 259, 235, 353,
@@ -28,7 +29,28 @@ describe("nextPositonの結果は正しいか？", () => {
     );
   });
 });
-
+describe("座標への変換の確認", () => {
+  test("直線", () => {
+    const positions = mapVector(MockLayoutStraight3);
+    expect(positions.length).toBe(MockLayoutStraight3.length);
+    expect(positions.every((t) => t.angle === 0)).toBe(true);
+    const expectedPositions: RailVector4[] = [
+      { a: 24, b: 0, c: 0, d: 0 },
+      { a: 48, b: 0, c: 0, d: 0 },
+      { a: 72, b: 0, c: 0, d: 0 },
+    ];
+    expect(positions.map((t) => t.movement)).toEqual(expectedPositions);
+  });
+  test("直線・90度カーブ・直線", () => {
+    const positions = mapVector([
+      MockStraight,
+      MockCurve90reverse,
+      MockStraight,
+    ]);
+    expect(positions.length).toBe(3);
+    console.table(positions.map(flat));
+  });
+});
 // describe("座標への変換", () => {});
 
 describe("単一要素でのテスト", () => {
