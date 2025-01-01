@@ -1,7 +1,7 @@
 import { ANGLE_TABLE } from "./classConstants";
 import type { RailShape } from "./shape";
 import type { RailVector4 } from "./vector4";
-import { add, scale } from "./vector4";
+import { add, scale, zeroVector } from "./vector4";
 
 /**
  * @description レールの直線部分の形状を取得する
@@ -15,6 +15,19 @@ export const straightVector = (
 ): RailVector4 => {
   // 曲線側を除算する代わりに直線を2倍にする
   return scale(ANGLE_TABLE.straight(starAngle), shape.straightLength * 2);
+};
+
+const curveVectorR1 = () => {};
+
+const accumlateCurveVector = (shape: RailShape, startAngle: number) => {
+  // 基本的にarc=1なので、それに備えて最適化する。
+  // arcが負の値だと困るじゃん
+  // 開始位置と終了位置だけ量が異なる
+  const result: RailVector4 = zeroVector();
+  for (let i = 0; i < shape.arc; ++i) {
+    const vector = 0;
+  }
+  return result;
 };
 
 /**
