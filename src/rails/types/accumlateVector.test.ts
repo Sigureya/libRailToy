@@ -2,6 +2,7 @@ import { test, expect, describe } from "vitest";
 import { accmulateVector, mapVector, nextPosition } from "./accumlateVector";
 import {
   MockCurve45,
+  MockCurve45reverse,
   MockCurve90,
   MockCurve90reverse,
   MockStraight,
@@ -45,7 +46,6 @@ describe("座標への変換の確認", () => {
   test("直線・90度カーブ・直線", () => {
     const positions = mapVector([MockStraight, MockCurve90, MockStraight]);
     expect(positions.length).toBe(3);
-    console.table(positions.map(flat));
     const expectedPositions: RailTransform[] = [
       { movement: { a: 24, b: 0, c: 0, d: 0 }, angle: 0 },
       { movement: { a: 48, b: 0, c: 24, d: 0 }, angle: 2 },
@@ -65,7 +65,6 @@ describe("座標への変換の確認", () => {
       { angle: -2, movement: { a: 48, b: 0, c: -24, d: 0 } },
       { angle: -2, movement: { a: 48, b: 0, c: -48, d: 0 } },
     ];
-    console.table(positions.map(flat));
     expect(positions).toEqual(expectedPositions);
   });
 });
@@ -92,19 +91,51 @@ describe("単一要素でのテスト", () => {
     expect(result.movement).toEqual(zeroVector());
   });
 });
-test("曲線と直線の混合", () => {
+
+describe("直線と曲線の混合", () => {
   const straight = accmulateVector([
     MockStraight,
     MockStraight,
     MockStraight,
     MockStraight,
   ]);
-  const curve = accmulateVector([
+
+  const curve45 = accmulateVector([
+    MockCurve45,
+    MockCurve45,
+    MockCurve45reverse,
+    MockCurve45reverse,
+    MockCurve45reverse,
+    MockCurve45reverse,
+    MockCurve45,
+    MockCurve45,
+  ]);
+
+  const curve90 = accmulateVector([
     MockCurve90,
     MockCurve90reverse,
     MockCurve90reverse,
     MockCurve90,
   ]);
-  expect(straight.angle).toEqual(curve.angle);
-  expect(straight.movement).toEqual(curve.movement);
+  // test("同じ軌跡の曲線", () => {
+  //   expect(curve45.angle).toEqual(curve90.angle);
+  //   expect(curve45.movement).toEqual(curve90.movement);
+  // });
+  // test("直線と90曲線の混合", () => {
+  //   expect(straight.angle).toEqual(curve45.angle);
+  //   expect(straight.movement).toEqual(curve45.movement);
+  // });
+  test("直線と90曲線の混合", () => {
+    expect(straight.angle).toEqual(curve90.angle);
+    expect(straight.movement).toEqual(curve90.movement);
+  });
+});
+describe("曲線が等しいか？", () => {
+  test("90度カーブ", () => {
+    const curve45x2 = accmulateVector([MockCurve45, MockCurve45]);
+    const curve90 = accmulateVector([MockCurve90]);
+    console.table([curve45x2, curve90].map(flat));
+
+    expect(curve45x2).toEqual(curve90);
+  });
 });
