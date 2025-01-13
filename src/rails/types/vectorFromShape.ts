@@ -1,24 +1,56 @@
 import { ANGLE_TABLE } from "./classConstants";
 import type { RailShape } from "./shape";
 import type { RailVector4 } from "./vector4";
-import { add, scale } from "./vector4";
+import { add, scale, zeroVector } from "./vector4";
 
-// とりあえず直線成分だけ取得してみる
-export const straightVector = (shape: RailShape, angle = 0): RailVector4 => {
+/**
+ * @description レールの直線部分の形状を取得する
+ * @param shape レールの形状
+ * @param starAngle 開始地点の角度
+ * @returns
+ */
+export const straightVector = (
+  shape: RailShape,
+  starAngle = 0
+): RailVector4 => {
   // 曲線側を除算する代わりに直線を2倍にする
-  return scale(ANGLE_TABLE.straight(angle), shape.straightLength * 2);
+  return scale(ANGLE_TABLE.straight(starAngle), shape.straightLength * 2);
 };
 
-// arcを引いてから計算するべき。そうすればレールを回転できる
-export const curveVector = (shape: RailShape, angle = 0) => {
-  const normalVector = ANGLE_TABLE.curve(angle, angle + shape.arc);
-  return scale(normalVector, shape.curveLength * shape.arc);
-};
-export const vectorFromRailShape = (shape: RailShape, angle = 0) =>
-  add(straightVector(shape, angle), curveVector(shape, angle));
-// railShape[]=>railNodeが必要
-// まず表向きのレールだけ考える
+const curveVectorR1 = () => {};
 
-// ベクトルを合成する必要があるので、 ループで対処する。
-// そしてループ処理は重たいので、テーブルで持つ
-// テスト用にテーブル実装を並行して用意する
+const accumlateCurveVector = (shape: RailShape, startAngle: number) => {
+  // 基本的にarc=1なので、それに備えて最適化する。
+  // arcが負の値だと困るじゃん
+  // 開始位置と終了位置だけ量が異なる
+  const result: RailVector4 = zeroVector();
+  for (let i = 0; i < shape.arc; ++i) {
+    const vector = 0;
+  }
+  return result;
+};
+
+/**
+ * @description 形状から曲線部分の移動量をベクトルで取得する
+ * @param shape レールの形状
+ * @param startAngle 開始地点の角度
+ * @returns
+ */
+export const curveVector = (shape: RailShape, startAngle = 0): RailVector4 => {
+  const begin = ANGLE_TABLE.straight(startAngle);
+  const end = ANGLE_TABLE.straight(startAngle + shape.arc);
+  const acm = add(begin, end);
+  return scale(acm, shape.curveLength * Math.abs(shape.arc));
+};
+/**
+ * @description レールの移動量をベクトルで取得する
+ * @param shape レールの形状
+ * @param startAngle 開始地点の角度
+ * @returns
+ */
+export const vectorFromRailShape = (
+  shape: RailShape,
+  startAngle = 0
+): RailVector4 => {
+  return add(straightVector(shape, startAngle), curveVector(shape, startAngle));
+};

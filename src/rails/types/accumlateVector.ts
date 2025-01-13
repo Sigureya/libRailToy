@@ -1,5 +1,4 @@
 import type { RailShape } from "./shape";
-import type { RailVector4 } from "./vector4";
 import { add, zeroVector } from "./vector4";
 import type {
   RailTransform,
