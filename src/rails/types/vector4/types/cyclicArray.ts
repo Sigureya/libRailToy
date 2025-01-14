@@ -16,6 +16,18 @@ export class CyclicArray<T, A extends unknown[] = AddArray<T>> {
     const result = angle % length;
     return result < 0 ? result + length : result;
   }
+  reduce<U>(
+    begin: number,
+    fn: (previousValue: U, currentValue: A[number]) => U,
+    initialValue: U
+  ) {
+    let result = initialValue;
+    for (let index = 0; index < this._table.length; index++) {
+      const element = this.at(begin + index);
+      result = fn(result, element);
+    }
+    return result;
+  }
   at(angle: number): A[number] {
     return this._table[this.calcIndex(angle)];
   }
