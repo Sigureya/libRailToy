@@ -4,7 +4,7 @@ import type {
   UnitRailVector4,
 } from "./types/";
 import { CyclicArray } from "./types/";
-import { accmulateVector } from "./utils";
+import { accmulateVector, add, zeroVector } from "./utils";
 
 import {
   VECTOR_ANGLE_0,
@@ -84,4 +84,25 @@ export interface TableEntry {
 export const createAngleTable = () => {
   const units = createIdentiyVectorTable();
   return createAngleTableFromUnits(units);
+};
+
+export const createCurveVectorTable = (
+  list: CyclicArray<UnitRailVector4>,
+  begin: number
+) => {
+  return list.reduce<RailVector4[]>(
+    begin,
+    (result, vec) => {
+      const last = getLast(result);
+      result.push(add(last, vec));
+      return result;
+    },
+    []
+  );
+};
+export const getLast = (list: ReadonlyArray<RailVector4>) => {
+  if (list.length > 0) {
+    return list[list.length - 1];
+  }
+  return zeroVector();
 };

@@ -16,4 +16,5 @@ export class RailAngleTable {
   curve(angle: number, arc: number) {
     return this._table.at(angle).CURVE.at(arc);
   }
+  curve2(angle: number, arc: number) {}
 }
